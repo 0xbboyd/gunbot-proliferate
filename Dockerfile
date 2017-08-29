@@ -41,6 +41,9 @@ tmux is used to maintain concurrent windows.\n\
 Note you can create a new window using ctrl-b c, and you can\n\
 navigate to an existing window using ctrl-b <window>.\n\
 \n\
+Run these commands to init GUNBOT:\n\
+gcd\n\
+ginit\n\
 "' >> /root/.bashrc
                                             
-ENTRYPOINT tmux new -s gunbot-proliferate 'gcd && ginit'
+ENTRYPOINT tmux new -s gunbot-proliferate
