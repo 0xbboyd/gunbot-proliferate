@@ -58,5 +58,6 @@ gcd\n\
 ginit\n\
 "' >> /root/.bashrc
 
-ENTRYPOINT ["tmux", "new", "-s", "gunbot"]
+# ENTRYPOINT ["tmux", "new", "-s", "gunbot"]
+ENTRYPOINT ["pm2-docker"]
 

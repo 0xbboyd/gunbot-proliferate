@@ -1,2 +1,2 @@
-
-docker build -t gunbot-proliferate:latest .
+docker build -t firemound/gunbot-proliferate:latest .
+docker push firemound/gunbot-proliferate:latest

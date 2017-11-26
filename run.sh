@@ -1,1 +1,1 @@
-docker run -i -t gunbot-proliferate:latest
+docker run -it firemound/gunbot-proliferate:latest gunbot0.yaml
