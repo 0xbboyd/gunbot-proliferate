@@ -1,0 +1,8 @@
+version: '3.4'
+services:
+  master:
+    image: firemound/gunbot-proliferate:latest
+    command: 'pm2 start gunbot0.yaml && gmon'
+  worker1:
+    image: firemound/gunbot-proliferate:latest
+    command: 'pm2 start gunbot1.yaml && gmon'

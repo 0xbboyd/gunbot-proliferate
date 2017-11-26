@@ -43,6 +43,8 @@ RUN git clone --mirror git@bitbucket.org:brendan_boyd/gunbot-config.git
 WORKDIR /src/gunbot-config.git
 RUN git --work-tree=/opt/gunbot --git-dir=/src/gunbot-config.git checkout -f
 
+WORKDIR /opt/gunbot
+
 RUN echo 'figlet GUNBOT PROLIFERATE' >> /root/.bashrc
 RUN echo 'echo "\n\
 \n\
@@ -55,4 +57,6 @@ Run these commands to init GUNBOT:\n\
 gcd\n\
 ginit\n\
 "' >> /root/.bashrc
-                                            
+
+ENTRYPOINT ["tmux", "new", "-s", "gunbot"]
+
