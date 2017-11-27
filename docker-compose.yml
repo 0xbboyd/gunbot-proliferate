@@ -5,8 +5,18 @@ services:
     deploy:
       replicas: 1
     command: gunbot0.yaml
-  # worker1:
-  #   image: firemound/gunbot-proliferate:latest
-  #   deploy:
-  #     replicas: 1
-  #   command: 'pm2 start gunbot1.yaml && gmon'
+  worker1:
+    image: firemound/gunbot-proliferate:latest
+    deploy:
+      replicas: 1
+    command: gunbot1.yaml
+  worker2:
+    image: firemound/gunbot-proliferate:latest
+    deploy:
+      replicas: 1
+    command: gunbot2.yaml
+  worker3:
+    image: firemound/gunbot-proliferate:latest
+    deploy:
+      replicas: 1
+    command: gunbot3.yaml

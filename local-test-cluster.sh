@@ -1,13 +1,15 @@
-docker-machine create --engine-label gunbot --driver virtualbox trex-conservative1
-docker-machine create --engine-label gunbot --driver virtualbox trex-conservative2
+docker-machine create --driver virtualbox trex1
+docker-machine create --driver virtualbox trex2
+docker-machine create --driver virtualbox trex3
+docker-machine create --driver virtualbox trex4
 docker-machine ls
-$LEADER=docker-machine ip trex-conservative1
-echo "leader ip $LEADER"
-# docker-machine ssh trex-conservative1 "docker swarm init --advertise-addr $LEADER"
-# $JOINTOKEN=docker-machine ssh trex-conservative2 "docker swarm join-token -q worker"
-# echo "join token $JOINTOKEN"
-# docker-machine ssh trex-conservative2 "docker swarm join --token $(docker swarm join-token -q worker) $LEADER"
-# docker-machine ssh trex-conservative1 "docker node ls"
-# eval $(docker-machine env trex-conservative1)
-# docker-machine ls
-# docker stack deploy --with-registry-auth --compose-file docker-compose.yml trex-conservative
+IP=$(docker-machine ip trex1)
+echo "trex1 ip $IP"
+docker-machine ssh trex1 "docker swarm init --advertise-addr $IP"
+JOINTOKEN=$(docker-machine ssh trex1 "docker swarm join-token -q manager")
+echo "join token $JOINTOKEN"
+docker-machine ssh trex2 "docker swarm join --token $JOINTOKEN $IP"
+docker-machine ssh trex1 "docker node ls"
+eval $(docker-machine env trex1)
+docker-machine ls
+docker stack deploy --with-registry-auth --compose-file docker-compose.yml trex
